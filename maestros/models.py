@@ -59,6 +59,8 @@ class Material(models.Model):
         return self.material
 
 
+
+
 class Nivel1(models.Model):
     codigo = models.CharField(max_length=9, unique=True, null=False, db_column='RPA_WGH1', )
     nivel1 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 1')

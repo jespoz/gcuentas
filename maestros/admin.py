@@ -25,7 +25,9 @@ class MarcaAdmin(admin.ModelAdmin):
 
 @admin.register(Material)
 class MaterialAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['codigo', 'material']
+    search_fields = ['material']
+    list_editable = ['material']
 
 
 @admin.register(Nivel1)
@@ -90,6 +92,6 @@ class AtributoClienteAdmin(admin.ModelAdmin):
 
 @admin.register(AtributoMaterial)
 class AtributoMaterialAdmin(admin.ModelAdmin):
-    pass
-
-
+    list_display = ['material','sector','nivel2','nivel3']
+    list_filter = ['sector', 'nivel2']
+    search_fields = ['sector']
