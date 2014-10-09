@@ -99,7 +99,7 @@ class Nivel3(models.Model):
 
 
 class Nivel4(models.Model):
-    codigo = models.CharField(max_length=9, unique=True, null=False, db_column='RPA_WGH4', )
+    codigo = models.CharField(max_length=11, unique=True, null=False, db_column='RPA_WGH4', )
     nivel4 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 4')
 
     class Meta:
@@ -226,8 +226,7 @@ class AtributoCliente(models.Model):
 class AtributoMaterial(models.Model):
     material = models.ForeignKey(Material, unique=True, null=False, db_column='/BIC/ZMATERIAL')
     sector = models.ForeignKey(Sector, null=True, db_column='/BIC/ZITORIGEN', db_index=False)
-    grupoArticulo = models.ForeignKey(GrupoArticulo, null=True, db_column='EXTMATLGRP', verbose_name='Grupo Articulo',
-                                      db_index=False)
+    grupoArticulo = models.ForeignKey(GrupoArticulo, null=True, db_column='EXTMATLGRP', verbose_name='Grupo Articulo', db_index=False)
     nivel1 = models.ForeignKey(Nivel1, null=True, db_column='RPA_WGH1', db_index=False)
     nivel2 = models.ForeignKey(Nivel2, null=True, db_column='RPA_WGH2', db_index=False)
     nivel3 = models.ForeignKey(Nivel3, null=True, db_column='RPA_WGH3', db_index=False)
@@ -240,33 +239,3 @@ class AtributoMaterial(models.Model):
 
     def __unicode__(self):
         return self.material.codigo
-
-
-class NivelServicio(models.Model):
-    fecha = models.DateField(null=False, db_column='CALDAY')
-    cliente = models.ForeignKey(Cliente, null=False, db_column='/BIC/ZCUSTOMER', db_index=False)
-    grupoArticulo = models.ForeignKey(GrupoArticulo, null=False, db_column='EXTMATLGRP', verbose_name='Grupo Articulo',
-                                      db_index=False)
-    pedido = models.FloatField(default=0, db_column='/BIC/ZNTPECAN')
-    factura = models.FloatField(default=0, db_column='/BIC/ZNTFACAN')
-    demanda = models.FloatField(default=0, db_column='/BIC/ZNTDECAN')
-
-    class Meta:
-        db_table = '/BIC/OHZOHNVSER'
-        verbose_name = 'Nivel de Servicio'
-        verbose_name_plural = 'Nivel de Servicio'
-
-
-class VentaDiaria(models.Model):
-    cliente = models.ForeignKey(Cliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
-    fecha = models.DateField(null=False, db_column='DIM0CALDAY')
-    material = models.ForeignKey(Material, null=False, db_column='DIMZMATERIAL', db_index=False)
-    fuente = models.CharField(max_length=3, null=False, db_column='DIMZFNTEORG')
-    unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')
-    kilo = models.FloatField(default=0, db_column='KYF4ZABR2XEKJ1U')
-    neto = models.FloatField(default=0, db_column='KYF4Z6SI9QLJ980')
-
-    class Meta:
-        db_table = '/BIC/0CZVDLTSBW'
-        verbose_name = 'Venta Diaria'
-        verbose_name_plural = 'Venta Diaria'

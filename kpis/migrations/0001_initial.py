@@ -5,27 +5,24 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
+
     dependencies = [
-        ('migration', '0002_auto_20141007_1438'),
+        ('maestros', '__latest__'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AtributoMaterial',
+            name='ClienteNoAtendido',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('grupoArticulo', models.ForeignKey(db_column=b'EXTMATLGRP', verbose_name=b'Grupo Articulo',
-                                                    to='migration.GrupoArticulo', null=True, db_index=False)),
-                ('material', models.ForeignKey(db_column=b'/BIC/ZMATERIAL', to='migration.Material', unique=True)),
-                ('nivel1', models.ForeignKey(to='migration.Nivel1', null=True, db_column=b'RPA_WGH1', db_index=False)),
-                ('nivel2', models.ForeignKey(to='migration.Nivel2', null=True, db_column=b'RPA_WGH2', db_index=False)),
-                ('nivel3', models.ForeignKey(to='migration.Nivel3', null=True, db_column=b'RPA_WGH3', db_index=False)),
-                ('nivel4', models.ForeignKey(to='migration.Nivel4', null=True, db_column=b'RPA_WGH4', db_index=False)),
-                ('sector',
-                 models.ForeignKey(to='migration.Sector', null=True, db_column=b'/BIC/ZITORIGEN', db_index=False)),
+                ('mes', models.IntegerField(db_column=b'DIM0CALMONTH')),
+                ('cliente', models.ForeignKey(to='maestros.AtributoCliente', db_column=b'DIMZCUSTOMER', db_index=False)),
+                ('material', models.ForeignKey(to='maestros.AtributoMaterial', db_column=b'DIMZMATERIAL', db_index=False)),
             ],
             options={
-                'db_table': b'/BIC/OHZOHMATATT',
+                'db_table': b'/BIC/0CZCNA_COM',
+                'verbose_name': b'Clientes No Atendidos',
+                'verbose_name_plural': b'Clientes No Atendidos',
             },
             bases=(models.Model,),
         ),
@@ -37,9 +34,8 @@ class Migration(migrations.Migration):
                 ('pedido', models.FloatField(default=0, db_column=b'/BIC/ZNTPECAN')),
                 ('factura', models.FloatField(default=0, db_column=b'/BIC/ZNTFACAN')),
                 ('demanda', models.FloatField(default=0, db_column=b'/BIC/ZNTDECAN')),
-                ('cliente', models.ForeignKey(to='migration.Cliente', db_column=b'/BIC/ZCUSTOMER', db_index=False)),
-                ('grupoArticulo', models.ForeignKey(verbose_name=b'Grupo Articulo', to='migration.GrupoArticulo',
-                                                    db_column=b'EXTMATLGRP', db_index=False)),
+                ('cliente', models.ForeignKey(to='maestros.AtributoCliente', db_column=b'/BIC/ZCUSTOMER', db_index=False)),
+                ('grupoArticulo', models.ForeignKey(verbose_name=b'Grupo Articulo', to='maestros.GrupoArticulo', db_column=b'EXTMATLGRP', db_index=False)),
             ],
             options={
                 'db_table': b'/BIC/OHZOHNVSER',
@@ -57,8 +53,8 @@ class Migration(migrations.Migration):
                 ('unidad', models.FloatField(default=0, db_column=b'KYF4ZABR2I1ILUF')),
                 ('kilo', models.FloatField(default=0, db_column=b'KYF4ZABR2XEKJ1U')),
                 ('neto', models.FloatField(default=0, db_column=b'KYF4Z6SI9QLJ980')),
-                ('cliente', models.ForeignKey(to='migration.Cliente', db_column=b'DIMZCUSTOMER', db_index=False)),
-                ('material', models.ForeignKey(to='migration.Material', db_column=b'DIMZMATERIAL', db_index=False)),
+                ('cliente', models.ForeignKey(to='maestros.AtributoCliente', db_column=b'DIMZCUSTOMER', db_index=False)),
+                ('material', models.ForeignKey(to='maestros.AtributoMaterial', db_column=b'DIMZMATERIAL', db_index=False)),
             ],
             options={
                 'db_table': b'/BIC/0CZVDLTSBW',

@@ -93,11 +93,3 @@ class AtributoMaterialAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(NivelServicio)
-class NivelServicioAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(VentaDiaria)
-class VentaDiariaAdmin(admin.ModelAdmin):
-    pass

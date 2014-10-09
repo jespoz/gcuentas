@@ -5,6 +5,7 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
+
     dependencies = [
     ]
 
@@ -25,6 +26,18 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
+            name='AtributoMaterial',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+            ],
+            options={
+                'db_table': b'/BIC/OHZOHMATATT',
+                'verbose_name': b'Atributo de Material',
+                'verbose_name_plural': b'Atributos de Materiales',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Cadena',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -35,6 +48,12 @@ class Migration(migrations.Migration):
                 'db_table': b'/BIC/OHZOHCADTXT',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='atributocliente',
+            name='cadena',
+            field=models.ForeignKey(to='maestros.Cadena', null=True, db_column=b'/BIC/ZCADENA', db_index=False),
+            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Cliente',
@@ -51,7 +70,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='atributocliente',
             name='cliente',
-            field=models.ForeignKey(db_column=b'/BIC/ZCUSTOMER', to='migration.Cliente', unique=True),
+            field=models.ForeignKey(db_column=b'/BIC/ZCUSTOMER', to='maestros.Cliente', unique=True),
             preserve_default=True,
         ),
         migrations.CreateModel(
@@ -59,8 +78,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo', models.CharField(unique=True, max_length=18, db_column=b'EXTMATLGRP')),
-                ('grupoArticulo',
-                 models.CharField(max_length=40, null=True, verbose_name=b'Grupo Articulo', db_column=b'TXTMD')),
+                ('grupoArticulo', models.CharField(max_length=40, null=True, verbose_name=b'Grupo Articulo', db_column=b'TXTMD')),
             ],
             options={
                 'db_table': b'/BIC/OHZOHGEXTTX',
@@ -68,6 +86,12 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Grupo Articulo Externo',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='atributomaterial',
+            name='grupoArticulo',
+            field=models.ForeignKey(db_column=b'EXTMATLGRP', verbose_name=b'Grupo Articulo', to='maestros.GrupoArticulo', null=True, db_index=False),
+            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Marca',
@@ -90,8 +114,15 @@ class Migration(migrations.Migration):
             ],
             options={
                 'db_table': b'/BIC/OHZOHMATTXT',
+                'verbose_name_plural': b'Materiales',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='atributomaterial',
+            name='material',
+            field=models.ForeignKey(db_column=b'/BIC/ZMATERIAL', to='maestros.Material', unique=True),
+            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Nivel1',
@@ -107,6 +138,12 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.AddField(
+            model_name='atributomaterial',
+            name='nivel1',
+            field=models.ForeignKey(to='maestros.Nivel1', null=True, db_column=b'RPA_WGH1', db_index=False),
+            preserve_default=True,
+        ),
         migrations.CreateModel(
             name='Nivel2',
             fields=[
@@ -120,6 +157,12 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Nivel 2',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='atributomaterial',
+            name='nivel2',
+            field=models.ForeignKey(to='maestros.Nivel2', null=True, db_column=b'RPA_WGH2', db_index=False),
+            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Nivel3',
@@ -135,6 +178,12 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.AddField(
+            model_name='atributomaterial',
+            name='nivel3',
+            field=models.ForeignKey(to='maestros.Nivel3', null=True, db_column=b'RPA_WGH3', db_index=False),
+            preserve_default=True,
+        ),
         migrations.CreateModel(
             name='Nivel4',
             fields=[
@@ -149,13 +198,18 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.AddField(
+            model_name='atributomaterial',
+            name='nivel4',
+            field=models.ForeignKey(to='maestros.Nivel4', null=True, db_column=b'RPA_WGH4', db_index=False),
+            preserve_default=True,
+        ),
         migrations.CreateModel(
             name='OficinaVentas',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo', models.CharField(unique=True, max_length=4, db_column=b'SALES_OFF')),
-                ('oficinaVentas',
-                 models.CharField(max_length=40, null=True, verbose_name=b'Oficina de Ventas', db_column=b'TXTMD')),
+                ('oficinaVentas', models.CharField(max_length=40, null=True, verbose_name=b'Oficina de Ventas', db_column=b'TXTMD')),
             ],
             options={
                 'db_table': b'/BIC/OHZOHIFVTXT',
@@ -163,6 +217,12 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Oficina de Ventas',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='atributocliente',
+            name='oficinaVentas',
+            field=models.ForeignKey(db_column=b'SALES_OFF', verbose_name=b'Oficina de Ventas', to='maestros.OficinaVentas', null=True, db_index=False),
+            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Sector',
@@ -176,6 +236,12 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Sectores',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='atributomaterial',
+            name='sector',
+            field=models.ForeignKey(to='maestros.Sector', null=True, db_column=b'/BIC/ZITORIGEN', db_index=False),
+            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Subcadena',
@@ -192,7 +258,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='atributocliente',
             name='subcadena',
-            field=models.ForeignKey(to='migration.Subcadena', null=True, db_column=b'/BIC/ZSBCADENA', db_index=False),
+            field=models.ForeignKey(to='maestros.Subcadena', null=True, db_column=b'/BIC/ZSBCADENA', db_index=False),
             preserve_default=True,
         ),
         migrations.CreateModel(
@@ -200,8 +266,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo', models.CharField(unique=True, max_length=2, db_column=b'/BIC/ZSUBTICL')),
-                ('subtipoCliente',
-                 models.CharField(max_length=40, null=True, verbose_name=b'Subtipo Cliente', db_column=b'TXTMD')),
+                ('subtipoCliente', models.CharField(max_length=40, null=True, verbose_name=b'Subtipo Cliente', db_column=b'TXTMD')),
             ],
             options={
                 'db_table': b'/BIC/OHZOHSTCLIT',
@@ -210,13 +275,18 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.AddField(
+            model_name='atributocliente',
+            name='subtipoCliente',
+            field=models.ForeignKey(db_column=b'/BIC/ZSUBTICL', verbose_name=b'Subtipo de Cliente', to='maestros.SubtipoCliente', null=True, db_index=False),
+            preserve_default=True,
+        ),
         migrations.CreateModel(
             name='TipoCliente',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo', models.CharField(unique=True, max_length=2, db_column=b'/BIC/ZTIPCL')),
-                ('tipoCliente',
-                 models.CharField(max_length=40, null=True, verbose_name=b'Tipo Cliente', db_column=b'TXTMD')),
+                ('tipoCliente', models.CharField(max_length=40, null=True, verbose_name=b'Tipo Cliente', db_column=b'TXTMD')),
             ],
             options={
                 'db_table': b'/BIC/OHZOHTCLITX',
@@ -225,13 +295,18 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.AddField(
+            model_name='atributocliente',
+            name='tipoCliente',
+            field=models.ForeignKey(db_column=b'/BIC/ZTIPCL', verbose_name=b'Tipo de Cliente', to='maestros.TipoCliente', null=True, db_index=False),
+            preserve_default=True,
+        ),
         migrations.CreateModel(
             name='ZonaReparto',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo', models.CharField(unique=True, max_length=10, db_column=b'/BIC/ZLZONE')),
-                ('zonaReparto',
-                 models.CharField(max_length=40, null=True, verbose_name=b'Zona de Reparto', db_column=b'TXTMD')),
+                ('zonaReparto', models.CharField(max_length=40, null=True, verbose_name=b'Zona de Reparto', db_column=b'TXTMD')),
             ],
             options={
                 'db_table': b'/BIC/OHZOHZONRTX',
@@ -240,13 +315,18 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
+        migrations.AddField(
+            model_name='atributocliente',
+            name='zonaReparto',
+            field=models.ForeignKey(db_column=b'/BIC/ZLZONE', verbose_name=b'Zona de Reporte', to='maestros.ZonaReparto', null=True, db_index=False),
+            preserve_default=True,
+        ),
         migrations.CreateModel(
             name='ZonaVentas',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo', models.CharField(unique=True, max_length=6, db_column=b'SALES_DIST')),
-                ('zonaVentas',
-                 models.CharField(max_length=20, null=True, verbose_name=b'Zona de Ventas', db_column=b'TXTSH')),
+                ('zonaVentas', models.CharField(max_length=20, null=True, verbose_name=b'Zona de Ventas', db_column=b'TXTSH')),
             ],
             options={
                 'db_table': b'/BIC/OHZOHZONVTX',
@@ -254,5 +334,11 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Zona de Ventas',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='atributocliente',
+            name='zonaVentas',
+            field=models.ForeignKey(db_column=b'SALES_DIST', verbose_name=b'Zona de Ventas', to='maestros.ZonaVentas', null=True, db_index=False),
+            preserve_default=True,
         ),
     ]
