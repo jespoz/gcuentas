@@ -6,7 +6,7 @@ class Cadena(models.Model):
     cadena = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
-        db_table = '/BIC/OHZOHCADTXT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHCADTXT'
 
     def __unicode__(self):
         return self.cadena
@@ -17,7 +17,7 @@ class Cliente(models.Model):
     cliente = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
-        db_table = '/BIC/OHZOHCLITXT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHCLITXT'
 
     def __unicode__(self):
         return self.cliente
@@ -28,7 +28,7 @@ class GrupoArticulo(models.Model):
     grupoArticulo = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Grupo Articulo')
 
     class Meta:
-        db_table = '/BIC/OHZOHGEXTTX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHGEXTTX'
         verbose_name = 'Grupo Articulo Externo'
         verbose_name_plural = 'Grupo Articulo Externo'
 
@@ -41,24 +41,22 @@ class Marca(models.Model):
     marca = models.CharField(max_length=20, null=True, db_column='TXTSH')
 
     class Meta:
-        db_table = '/BIC/OHZOHMARCTX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHMARCTX'
 
     def __unicode__(self):
         return self.marca
 
 
 class Material(models.Model):
-    codigo = models.CharField(max_length=18, unique=True, null=False, db_column='/BIC/ZMATERIAL', )
+    codigo = models.CharField(max_length=18, unique=True, null=False, db_column='/BIC/ZMATERIAL')
     material = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
-        db_table = '/BIC/OHZOHMATTXT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHMATTXT'
         verbose_name_plural = 'Materiales'
 
     def __unicode__(self):
         return self.material
-
-
 
 
 class Nivel1(models.Model):
@@ -66,7 +64,7 @@ class Nivel1(models.Model):
     nivel1 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 1')
 
     class Meta:
-        db_table = '/BIC/OHZOHNIV1TX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHNIV1TX'
         verbose_name = 'Nivel 1'
         verbose_name_plural = 'Nivel 1'
 
@@ -79,7 +77,7 @@ class Nivel2(models.Model):
     nivel2 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 2')
 
     class Meta:
-        db_table = '/BIC/OHZOHNIV2TX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHNIV2TX'
         verbose_name = 'Nivel 2'
         verbose_name_plural = 'Nivel 2'
 
@@ -92,7 +90,7 @@ class Nivel3(models.Model):
     nivel3 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 3')
 
     class Meta:
-        db_table = '/BIC/OHZOHNIV3TX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHNIV3TX'
         verbose_name = 'Nivel 3'
         verbose_name_plural = 'Nivel 3'
 
@@ -105,7 +103,7 @@ class Nivel4(models.Model):
     nivel4 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 4')
 
     class Meta:
-        db_table = '/BIC/OHZOHNIV4TX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHNIV4TX'
         verbose_name = 'Nivel 4'
         verbose_name_plural = 'Nivel 4'
 
@@ -118,7 +116,7 @@ class Sector(models.Model):
     sector = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
-        db_table = '/BIC/OHZOHSECTXT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHSECTXT'
         verbose_name_plural = 'Sectores'
 
     def __unicode__(self):
@@ -130,7 +128,7 @@ class Subcadena(models.Model):
     subcadena = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
-        db_table = '/BIC/OHZOHSCADTX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHSCADTX'
 
     def __unicode__(self):
         return self.subcadena
@@ -141,7 +139,7 @@ class SubtipoCliente(models.Model):
     subtipoCliente = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Subtipo Cliente')
 
     class Meta:
-        db_table = '/BIC/OHZOHSTCLIT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHSTCLIT'
         verbose_name = 'Subtipo Cliente'
         verbose_name_plural = 'Subtipo Cliente'
 
@@ -154,7 +152,7 @@ class TipoCliente(models.Model):
     tipoCliente = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Tipo Cliente')
 
     class Meta:
-        db_table = '/BIC/OHZOHTCLITX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHTCLITX'
         verbose_name = 'Tipo Cliente'
         verbose_name_plural = 'Tipo Cliente'
 
@@ -167,7 +165,7 @@ class ZonaReparto(models.Model):
     zonaReparto = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Zona de Reparto')
 
     class Meta:
-        db_table = '/BIC/OHZOHZONRTX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHZONRTX'
         verbose_name = 'Zona de Reparto'
         verbose_name_plural = 'Zona de Reparto'
 
@@ -180,7 +178,7 @@ class ZonaVentas(models.Model):
     zonaVentas = models.CharField(max_length=20, null=True, db_column='TXTSH', verbose_name='Zona de Ventas')
 
     class Meta:
-        db_table = '/BIC/OHZOHZONVTX'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHZONVTX'
         verbose_name = 'Zona de Ventas'
         verbose_name_plural = 'Zona de Ventas'
 
@@ -193,7 +191,7 @@ class OficinaVentas(models.Model):
     oficinaVentas = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Oficina de Ventas')
 
     class Meta:
-        db_table = '/BIC/OHZOHIFVTXT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHIFVTXT'
         verbose_name = 'Oficina de Ventas'
         verbose_name_plural = 'Oficina de Ventas'
 
@@ -220,7 +218,7 @@ class AtributoCliente(models.Model):
                                    db_index=False)
 
     class Meta:
-        db_table = '/BIC/OHZOHCLIATT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHCLIATT'
         verbose_name = 'Atributo de Cliente'
         verbose_name_plural = 'Atributos de Clientes'
 
@@ -228,16 +226,32 @@ class AtributoCliente(models.Model):
 class AtributoMaterial(models.Model):
     material = models.ForeignKey(Material, unique=True, null=False, db_column='/BIC/ZMATERIAL')
     sector = models.ForeignKey(Sector, null=True, db_column='/BIC/ZITORIGEN', db_index=False)
-    grupoArticulo = models.ForeignKey(GrupoArticulo, null=True, db_column='EXTMATLGRP', verbose_name='Grupo Articulo', db_index=False)
+    grupoArticulo = models.ForeignKey(GrupoArticulo, null=True, db_column='EXTMATLGRP', verbose_name='Grupo Articulo',
+                                      db_index=False)
     nivel1 = models.ForeignKey(Nivel1, null=True, db_column='RPA_WGH1', db_index=False)
     nivel2 = models.ForeignKey(Nivel2, null=True, db_column='RPA_WGH2', db_index=False)
     nivel3 = models.ForeignKey(Nivel3, null=True, db_column='RPA_WGH3', db_index=False)
     nivel4 = models.ForeignKey(Nivel4, null=True, db_column='RPA_WGH4', db_index=False)
 
     class Meta:
-        db_table = '/BIC/OHZOHMATATT'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHMATATT'
         verbose_name = 'Atributo de Material'
         verbose_name_plural = 'Atributos de Materiales'
 
     def __unicode__(self):
         return self.material.codigo
+
+
+class AtributoInterlocutor(models.Model):
+    interlocutor = models.ForeignKey(Cliente, unique=True, null=False, db_column='/BIC/ZCUSTOMER')
+    rut = models.CharField(max_length=11, null=True, db_column='TAX_NUMB2')
+
+    class Meta:
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHINTEAT'
+        verbose_name = 'Atributo de Interlocutor'
+        verbose_name_plural = 'Atributos de Interlocutores'
+
+    def __unicode__(self):
+        return self.interlocutor.cliente
+
+

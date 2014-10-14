@@ -9,3 +9,13 @@ class NivelServicioAdmin(admin.ModelAdmin):
 @admin.register(VentaDiaria)
 class VentaDiariaAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(VentaAcumulada)
+class VentaAcumuladaAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(ClienteNoAtendido)
+class ClienteNoAtendidoAdmin(admin.ModelAdmin):
+    pass

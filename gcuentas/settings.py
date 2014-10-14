@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'maestros',
     'kpis',
+    'comisiones',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +56,11 @@ ROOT_URLCONF = 'gcuentas.urls'
 
 WSGI_APPLICATION = 'gcuentas.wsgi.application'
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as tcp
+
+TEMPLATE_CONTEXT_PROCESSORS = tcp + (
+    'principal.context_processors.menu',
+)
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -98,4 +104,6 @@ MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'static', 'templates'),
+    os.path.join(BASE_DIR, 'principal', 'templates'),
+    os.path.join(BASE_DIR, 'comisiones', 'templates'),
 )

@@ -1,0 +1,7 @@
+<nav>
+    <ul class="nav nav-pills nav-stacked">
+        {% for foo in menu %}
+            <li><a id="{{ foo.id }}" href="{{ foo.url }}" {% if foo.active %}class="active"{% endif %}><i class="fa fa-{{ foo.icon }}"></i><span class="after-icon">{{ foo.name }}</span></a></li>
+        {% endfor %}
+    </ul>
+</nav>

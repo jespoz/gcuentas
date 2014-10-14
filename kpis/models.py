@@ -11,7 +11,7 @@ class NivelServicio(models.Model):
     demanda = models.FloatField(default=0, db_column='/BIC/ZNTDECAN')
 
     class Meta:
-        db_table = '/BIC/OHZOHNVSER'
+        db_table = 'GCUENTAS\".\"/BIC/OHZOHNVSER'
         verbose_name = 'Nivel de Servicio'
         verbose_name_plural = 'Nivel de Servicio'
 
@@ -26,17 +26,35 @@ class VentaDiaria(models.Model):
     neto = models.FloatField(default=0, db_column='KYF4Z6SI9QLJ980')
 
     class Meta:
-        db_table = '/BIC/0CZVDLTSBW'
+        db_table = 'GCUENTAS\".\"/BIC/0CZVDLTSBW'
         verbose_name = 'Venta Diaria'
         verbose_name_plural = 'Venta Diaria'
+
+
+class VentaAcumulada(models.Model):
+    cliente = models.ForeignKey(AtributoCliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
+    fecha = models.DateField(null=False, db_column='DIM0CALDAY')
+    material = models.ForeignKey(AtributoMaterial, null=False, db_column='DIMZMATERIAL', db_index=False)
+    fuente = models.CharField(max_length=3, null=False, db_column='DIMZFNTEORG')
+    unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')
+    kilo = models.FloatField(default=0, db_column='KYF4ZABR2XEKJ1U')
+    neto = models.FloatField(default=0, db_column='KYF4Z6SI9QLJ980')
+
+    class Meta:
+        db_table = 'GCUENTAS\".\"/BIC/0CZVDLTSBW/ACUM'
+        verbose_name = 'Venta Acumulada'
+        verbose_name_plural = 'Venta Acumulada'
 
 
 class ClienteNoAtendido(models.Model):
     cliente = models.ForeignKey(AtributoCliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
     mes = models.IntegerField(null=False, db_column='DIM0CALMONTH')
     material = models.ForeignKey(AtributoMaterial, null=False, db_column='DIMZMATERIAL', db_index=False)
+    localesMes = models.FloatField(default=0, db_column='KYF44LHLWIKYTSO')
+    localesTresMes = models.FloatField(default=0, db_column='KYF44LHLWIKYTS01')
+    localesNoAtendidos = models.FloatField(default=0, db_column='KYF4ZFQCJ8RYJ1L')
 
     class Meta:
-        db_table = '/BIC/0CZCNA_COM'
-        verbose_name = 'Clientes No Atendidos'
+        db_table = 'GCUENTAS\".\"/BIC/0CZCNA_COM'
+        verbose_name = 'Cliente No Atendido'
         verbose_name_plural = 'Clientes No Atendidos'
