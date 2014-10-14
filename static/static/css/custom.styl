@@ -1,3 +1,6 @@
+vendor-prefixes ?= webkit moz official
+@import 'nib'
+@import 'nib/vendor'
 
 azul = rgb(39,92,168)
 naranjo = #FF5200
@@ -103,3 +106,58 @@ nav
 .vertical-divider
     border-left 1px solid #F2F2F2
     border-right 1px solid #FFF
+
+.wizard
+    width 100%
+    a
+        cursor default
+        text-decoration none
+        padding 10px 12px 10px 12px
+        margin-right 5px
+        background #efefef
+        position relative
+        display inline-block
+        &:before
+            width 0px
+            height 0px
+            border-top 20px inset transparent
+            border-bottom 20px inset transparent
+            border-left 20px solid #fff
+            position absolute
+            content ''
+            top 0
+            left 0
+        &:after
+            width 0px
+            height 0px
+            border-top 20px inset transparent
+            border-bottom 20px inset transparent
+            border-left 20px solid #efefef
+            position absolute
+            content ''
+            top 0
+            right -20px
+            z-index 2
+        &:first-child
+            border-radius 4px 0 0 4px
+            .badge
+                margin-left 0
+            &:before
+                border none
+        &:last-child
+            border-radius 0 4px 4px 0
+            &:after
+                border none
+    .badge
+        background-color #007ACC
+        margin 0 5px 0 18px
+        position relative
+        top -1px
+    .current
+        background #007ACC
+        color #FFF
+        .badge
+            background-color #FFF
+            color #007ACC
+        &:after
+            border-left-color #007ACC

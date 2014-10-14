@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Cadena(models.Model):
-    codigo = models.CharField(max_length=3, unique=True, db_column='/BIC/ZCADENA', )
+    codigo = models.CharField(primary_key=True, max_length=3, unique=True, db_column='/BIC/ZCADENA', )
     cadena = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
@@ -13,7 +13,7 @@ class Cadena(models.Model):
 
 
 class Cliente(models.Model):
-    codigo = models.CharField(max_length=10, unique=True, null=False, db_column='/BIC/ZCUSTOMER', )
+    codigo = models.CharField(primary_key=True, max_length=10, unique=True, null=False, db_column='/BIC/ZCUSTOMER', )
     cliente = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
@@ -24,7 +24,7 @@ class Cliente(models.Model):
 
 
 class GrupoArticulo(models.Model):
-    codigo = models.CharField(max_length=18, unique=True, null=False, db_column='EXTMATLGRP', )
+    codigo = models.CharField(primary_key=True, max_length=18, unique=True, null=False, db_column='EXTMATLGRP', )
     grupoArticulo = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Grupo Articulo')
 
     class Meta:
@@ -37,7 +37,7 @@ class GrupoArticulo(models.Model):
 
 
 class Marca(models.Model):
-    codigo = models.CharField(max_length=3, unique=True, null=False, db_column='/BIC/ZITMARCA', )
+    codigo = models.CharField(primary_key=True, max_length=3, unique=True, null=False, db_column='/BIC/ZITMARCA', )
     marca = models.CharField(max_length=20, null=True, db_column='TXTSH')
 
     class Meta:
@@ -48,7 +48,7 @@ class Marca(models.Model):
 
 
 class Material(models.Model):
-    codigo = models.CharField(max_length=18, unique=True, null=False, db_column='/BIC/ZMATERIAL')
+    codigo = models.CharField(primary_key=True, max_length=18, unique=True, null=False, db_column='/BIC/ZMATERIAL')
     material = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
@@ -60,7 +60,7 @@ class Material(models.Model):
 
 
 class Nivel1(models.Model):
-    codigo = models.CharField(max_length=9, unique=True, null=False, db_column='RPA_WGH1', )
+    codigo = models.CharField(primary_key=True, max_length=9, unique=True, null=False, db_column='RPA_WGH1', )
     nivel1 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 1')
 
     class Meta:
@@ -73,7 +73,7 @@ class Nivel1(models.Model):
 
 
 class Nivel2(models.Model):
-    codigo = models.CharField(max_length=9, unique=True, null=False, db_column='RPA_WGH2', )
+    codigo = models.CharField(primary_key=True, max_length=9, unique=True, null=False, db_column='RPA_WGH2', )
     nivel2 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 2')
 
     class Meta:
@@ -86,7 +86,7 @@ class Nivel2(models.Model):
 
 
 class Nivel3(models.Model):
-    codigo = models.CharField(max_length=9, unique=True, null=False, db_column='RPA_WGH3', )
+    codigo = models.CharField(primary_key=True, max_length=9, unique=True, null=False, db_column='RPA_WGH3', )
     nivel3 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 3')
 
     class Meta:
@@ -99,7 +99,7 @@ class Nivel3(models.Model):
 
 
 class Nivel4(models.Model):
-    codigo = models.CharField(max_length=11, unique=True, null=False, db_column='RPA_WGH4', )
+    codigo = models.CharField(primary_key=True, max_length=11, unique=True, null=False, db_column='RPA_WGH4', )
     nivel4 = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Nivel 4')
 
     class Meta:
@@ -112,7 +112,7 @@ class Nivel4(models.Model):
 
 
 class Sector(models.Model):
-    codigo = models.CharField(max_length=5, unique=True, null=False, db_column='/BIC/ZITORIGEN', )
+    codigo = models.CharField(primary_key=True, max_length=5, unique=True, null=False, db_column='/BIC/ZITORIGEN', )
     sector = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
@@ -124,7 +124,7 @@ class Sector(models.Model):
 
 
 class Subcadena(models.Model):
-    codigo = models.CharField(max_length=3, unique=True, null=False, db_column='/BIC/ZSBCADENA', )
+    codigo = models.CharField(primary_key=True, max_length=3, unique=True, null=False, db_column='/BIC/ZSBCADENA', )
     subcadena = models.CharField(max_length=40, null=True, db_column='TXTMD')
 
     class Meta:
@@ -135,7 +135,7 @@ class Subcadena(models.Model):
 
 
 class SubtipoCliente(models.Model):
-    codigo = models.CharField(max_length=2, unique=True, null=False, db_column='/BIC/ZSUBTICL', )
+    codigo = models.CharField(primary_key=True, max_length=2, unique=True, null=False, db_column='/BIC/ZSUBTICL', )
     subtipoCliente = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Subtipo Cliente')
 
     class Meta:
@@ -148,7 +148,7 @@ class SubtipoCliente(models.Model):
 
 
 class TipoCliente(models.Model):
-    codigo = models.CharField(max_length=2, unique=True, null=False, db_column='/BIC/ZTIPCL', )
+    codigo = models.CharField(primary_key=True, max_length=2, unique=True, null=False, db_column='/BIC/ZTIPCL', )
     tipoCliente = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Tipo Cliente')
 
     class Meta:
@@ -161,7 +161,7 @@ class TipoCliente(models.Model):
 
 
 class ZonaReparto(models.Model):
-    codigo = models.CharField(max_length=10, unique=True, null=False, db_column='/BIC/ZLZONE', )
+    codigo = models.CharField(primary_key=True, max_length=10, unique=True, null=False, db_column='/BIC/ZLZONE', )
     zonaReparto = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Zona de Reparto')
 
     class Meta:
@@ -174,7 +174,7 @@ class ZonaReparto(models.Model):
 
 
 class ZonaVentas(models.Model):
-    codigo = models.CharField(max_length=6, unique=True, null=False, db_column='SALES_DIST')
+    codigo = models.CharField(primary_key=True, max_length=6, unique=True, null=False, db_column='SALES_DIST')
     zonaVentas = models.CharField(max_length=20, null=True, db_column='TXTSH', verbose_name='Zona de Ventas')
 
     class Meta:
@@ -187,7 +187,7 @@ class ZonaVentas(models.Model):
 
 
 class OficinaVentas(models.Model):
-    codigo = models.CharField(max_length=4, unique=True, null=False, db_column='SALES_OFF')
+    codigo = models.CharField(primary_key=True, max_length=4, unique=True, null=False, db_column='SALES_OFF')
     oficinaVentas = models.CharField(max_length=40, null=True, db_column='TXTMD', verbose_name='Oficina de Ventas')
 
     class Meta:
@@ -200,7 +200,7 @@ class OficinaVentas(models.Model):
 
 
 class AtributoCliente(models.Model):
-    cliente = models.ForeignKey(Cliente, unique=True, null=False, db_column='/BIC/ZCUSTOMER')
+    cliente = models.ForeignKey(Cliente, primary_key=True, null=False, db_column='/BIC/ZCUSTOMER')
     rut = models.CharField(max_length=11, null=True, db_column='TAX_NUMB2')
     direccion = models.CharField(max_length=35, null=True, db_column='STREET')
     poblacion = models.CharField(max_length=35, null=True, db_column='CITY')
@@ -224,7 +224,7 @@ class AtributoCliente(models.Model):
 
 
 class AtributoMaterial(models.Model):
-    material = models.ForeignKey(Material, unique=True, null=False, db_column='/BIC/ZMATERIAL')
+    material = models.ForeignKey(Material, primary_key=True, null=False, db_column='/BIC/ZMATERIAL')
     sector = models.ForeignKey(Sector, null=True, db_column='/BIC/ZITORIGEN', db_index=False)
     grupoArticulo = models.ForeignKey(GrupoArticulo, null=True, db_column='EXTMATLGRP', verbose_name='Grupo Articulo',
                                       db_index=False)
@@ -243,7 +243,7 @@ class AtributoMaterial(models.Model):
 
 
 class AtributoInterlocutor(models.Model):
-    interlocutor = models.ForeignKey(Cliente, unique=True, null=False, db_column='/BIC/ZCUSTOMER')
+    interlocutor = models.ForeignKey(Cliente, primary_key=True, null=False, db_column='/BIC/ZCUSTOMER')
     rut = models.CharField(max_length=11, null=True, db_column='TAX_NUMB2')
 
     class Meta:

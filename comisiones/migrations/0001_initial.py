@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('maestros', '__latest__'),
+        ('maestros', '0001_initial'),
     ]
 
     operations = [
@@ -21,8 +21,8 @@ class Migration(migrations.Migration):
             ],
             options={
                 'db_table': b'GCUENTAS"."/BIC/SUBTIPO/COMISION',
-                'verbose_name': b'Tipo de Comision',
-                'verbose_name_plural': b'Tipo de Comision',
+                'verbose_name': b'Subtipo de Comision',
+                'verbose_name_plural': b'Subtipo de Comision',
             },
             bases=(models.Model,),
         ),
