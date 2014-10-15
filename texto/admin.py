@@ -82,4 +82,4 @@ class ZonaVentasAdmin(admin.ModelAdmin):
 
 @admin.register(OficinaVentas)
 class OficinaVentasAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['codigo', 'oficinaVentas']

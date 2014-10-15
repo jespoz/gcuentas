@@ -3,7 +3,7 @@ from atributo.models import *
 
 
 class NivelServicio(models.Model):
-    fecha = models.DateField(null=False, db_column='CALDAY')
+    fecha = models.CharField(max_length=8, null=False, db_column='CALDAY')
     cliente = models.ForeignKey(AtributoCliente, null=False, db_column='/BIC/ZCUSTOMER', db_index=False)
     grupoArticulo = models.ForeignKey(GrupoArticulo, null=False, db_column='EXTMATLGRP', verbose_name='Grupo Articulo', db_index=False)
     pedido = models.FloatField(default=0, db_column='/BIC/ZNTPECAN')
@@ -21,7 +21,7 @@ class NivelServicio(models.Model):
 
 class VentaDiaria(models.Model):
     cliente = models.ForeignKey(AtributoCliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
-    fecha = models.DateField(null=False, db_column='DIM0CALDAY')
+    fecha = models.CharField(max_length=8, null=False, db_column='DIM0CALDAY')
     material = models.ForeignKey(AtributoMaterial, null=False, db_column='DIMZMATERIAL', db_index=False)
     fuente = models.CharField(max_length=3, null=False, db_column='DIMZFNTEORG')
     unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')
@@ -38,7 +38,7 @@ class VentaDiaria(models.Model):
 
 class VentaAcumulada(models.Model):
     cliente = models.ForeignKey(AtributoCliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
-    fecha = models.DateField(null=False, db_column='DIM0CALDAY')
+    fecha = models.CharField(max_length=8, null=False, db_column='DIM0CALDAY')
     material = models.ForeignKey(AtributoMaterial, null=False, db_column='DIMZMATERIAL', db_index=False)
     fuente = models.CharField(max_length=3, null=False, db_column='DIMZFNTEORG')
     unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')

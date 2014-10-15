@@ -7,8 +7,8 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('atributo', '0001_initial'),
-        ('texto', '0001_initial'),
+        ('atributo', '__latest__'),
+        ('texto', '__latest__'),
     ]
 
     operations = [
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
             name='NivelServicio',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('fecha', models.DateField(db_column=b'CALDAY')),
+                ('fecha', models.CharField(max_length=8, db_column=b'CALDAY')),
                 ('pedido', models.FloatField(default=0, db_column=b'/BIC/ZNTPECAN')),
                 ('factura', models.FloatField(default=0, db_column=b'/BIC/ZNTFACAN')),
                 ('demanda', models.FloatField(default=0, db_column=b'/BIC/ZNTDECAN')),
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
             name='VentaAcumulada',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('fecha', models.DateField(db_column=b'DIM0CALDAY')),
+                ('fecha', models.CharField(max_length=8, db_column=b'DIM0CALDAY')),
                 ('fuente', models.CharField(max_length=3, db_column=b'DIMZFNTEORG')),
                 ('unidad', models.FloatField(default=0, db_column=b'KYF4ZABR2I1ILUF')),
                 ('kilo', models.FloatField(default=0, db_column=b'KYF4ZABR2XEKJ1U')),
@@ -76,7 +76,7 @@ class Migration(migrations.Migration):
             name='VentaDiaria',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('fecha', models.DateField(db_column=b'DIM0CALDAY')),
+                ('fecha', models.CharField(max_length=8, db_column=b'DIM0CALDAY')),
                 ('fuente', models.CharField(max_length=3, db_column=b'DIMZFNTEORG')),
                 ('unidad', models.FloatField(default=0, db_column=b'KYF4ZABR2I1ILUF')),
                 ('kilo', models.FloatField(default=0, db_column=b'KYF4ZABR2XEKJ1U')),
