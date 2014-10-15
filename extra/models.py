@@ -1,5 +1,5 @@
 from django.db import models
-from maestros.models import TipoCliente
+from texto.models import TipoCliente
 
 
 class TipoComision(models.Model):

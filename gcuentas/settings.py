@@ -37,9 +37,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'maestros',
-    'kpis',
-    'comisiones',
+    'texto',
+    'atributo',
+    'dato',
+    'extra',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,5 +106,5 @@ MEDIA_URL = '/media/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'static', 'templates'),
     os.path.join(BASE_DIR, 'principal', 'templates'),
-    os.path.join(BASE_DIR, 'comisiones', 'templates'),
+    os.path.join(BASE_DIR, 'comisiones', '../extras/templates'),
 )

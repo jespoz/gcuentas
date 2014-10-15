@@ -33,35 +33,6 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='AtributoInterlocutor',
-            fields=[
-                ('interlocutor', models.ForeignKey(primary_key=True, db_column=b'/BIC/ZCUSTOMER', serialize=False, to='maestros.Cliente')),
-                ('rut', models.CharField(max_length=11, null=True, db_column=b'TAX_NUMB2')),
-            ],
-            options={
-                'db_table': b'GCUENTAS"."/BIC/OHZOHINTEAT',
-                'verbose_name': b'Atributo de Interlocutor',
-                'verbose_name_plural': b'Atributos de Interlocutores',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='AtributoCliente',
-            fields=[
-                ('cliente', models.ForeignKey(primary_key=True, db_column=b'/BIC/ZCUSTOMER', serialize=False, to='maestros.Cliente')),
-                ('rut', models.CharField(max_length=11, null=True, db_column=b'TAX_NUMB2')),
-                ('direccion', models.CharField(max_length=35, null=True, db_column=b'STREET')),
-                ('poblacion', models.CharField(max_length=35, null=True, db_column=b'CITY')),
-                ('cadena', models.ForeignKey(to='maestros.Cadena', null=True, db_column=b'/BIC/ZCADENA', db_index=False)),
-            ],
-            options={
-                'db_table': b'GCUENTAS"."/BIC/OHZOHCLIATT',
-                'verbose_name': b'Atributo de Cliente',
-                'verbose_name_plural': b'Atributos de Clientes',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='GrupoArticulo',
             fields=[
                 ('codigo', models.CharField(max_length=18, unique=True, serialize=False, primary_key=True, db_column=b'EXTMATLGRP')),
@@ -98,19 +69,6 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='AtributoMaterial',
-            fields=[
-                ('material', models.ForeignKey(primary_key=True, db_column=b'/BIC/ZMATERIAL', serialize=False, to='maestros.Material')),
-                ('grupoArticulo', models.ForeignKey(db_column=b'EXTMATLGRP', verbose_name=b'Grupo Articulo', to='maestros.GrupoArticulo', null=True, db_index=False)),
-            ],
-            options={
-                'db_table': b'GCUENTAS"."/BIC/OHZOHMATATT',
-                'verbose_name': b'Atributo de Material',
-                'verbose_name_plural': b'Atributos de Materiales',
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='Nivel1',
             fields=[
                 ('codigo', models.CharField(max_length=9, unique=True, serialize=False, primary_key=True, db_column=b'RPA_WGH1')),
@@ -122,12 +80,6 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Nivel 1',
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='atributomaterial',
-            name='nivel1',
-            field=models.ForeignKey(to='maestros.Nivel1', null=True, db_column=b'RPA_WGH1', db_index=False),
-            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Nivel2',
@@ -142,12 +94,6 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.AddField(
-            model_name='atributomaterial',
-            name='nivel2',
-            field=models.ForeignKey(to='maestros.Nivel2', null=True, db_column=b'RPA_WGH2', db_index=False),
-            preserve_default=True,
-        ),
         migrations.CreateModel(
             name='Nivel3',
             fields=[
@@ -160,12 +106,6 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Nivel 3',
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='atributomaterial',
-            name='nivel3',
-            field=models.ForeignKey(to='maestros.Nivel3', null=True, db_column=b'RPA_WGH3', db_index=False),
-            preserve_default=True,
         ),
         migrations.CreateModel(
             name='Nivel4',
@@ -180,12 +120,6 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.AddField(
-            model_name='atributomaterial',
-            name='nivel4',
-            field=models.ForeignKey(to='maestros.Nivel4', null=True, db_column=b'RPA_WGH4', db_index=False),
-            preserve_default=True,
-        ),
         migrations.CreateModel(
             name='OficinaVentas',
             fields=[
@@ -199,12 +133,6 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.AddField(
-            model_name='atributocliente',
-            name='oficinaVentas',
-            field=models.ForeignKey(db_column=b'SALES_OFF', verbose_name=b'Oficina de Ventas', to='maestros.OficinaVentas', null=True, db_index=False),
-            preserve_default=True,
-        ),
         migrations.CreateModel(
             name='Sector',
             fields=[
@@ -217,12 +145,6 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.AddField(
-            model_name='atributomaterial',
-            name='sector',
-            field=models.ForeignKey(to='maestros.Sector', null=True, db_column=b'/BIC/ZITORIGEN', db_index=False),
-            preserve_default=True,
-        ),
         migrations.CreateModel(
             name='Subcadena',
             fields=[
@@ -233,12 +155,6 @@ class Migration(migrations.Migration):
                 'db_table': b'GCUENTAS"."/BIC/OHZOHSCADTX',
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='atributocliente',
-            name='subcadena',
-            field=models.ForeignKey(to='maestros.Subcadena', null=True, db_column=b'/BIC/ZSBCADENA', db_index=False),
-            preserve_default=True,
         ),
         migrations.CreateModel(
             name='SubtipoCliente',
@@ -253,12 +169,6 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.AddField(
-            model_name='atributocliente',
-            name='subtipoCliente',
-            field=models.ForeignKey(db_column=b'/BIC/ZSUBTICL', verbose_name=b'Subtipo de Cliente', to='maestros.SubtipoCliente', null=True, db_index=False),
-            preserve_default=True,
-        ),
         migrations.CreateModel(
             name='TipoCliente',
             fields=[
@@ -271,12 +181,6 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Tipo Cliente',
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='atributocliente',
-            name='tipoCliente',
-            field=models.ForeignKey(db_column=b'/BIC/ZTIPCL', verbose_name=b'Tipo de Cliente', to='maestros.TipoCliente', null=True, db_index=False),
-            preserve_default=True,
         ),
         migrations.CreateModel(
             name='ZonaReparto',
@@ -291,12 +195,6 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.AddField(
-            model_name='atributocliente',
-            name='zonaReparto',
-            field=models.ForeignKey(db_column=b'/BIC/ZLZONE', verbose_name=b'Zona de Reporte', to='maestros.ZonaReparto', null=True, db_index=False),
-            preserve_default=True,
-        ),
         migrations.CreateModel(
             name='ZonaVentas',
             fields=[
@@ -309,11 +207,5 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': b'Zona de Ventas',
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='atributocliente',
-            name='zonaVentas',
-            field=models.ForeignKey(db_column=b'SALES_DIST', verbose_name=b'Zona de Ventas', to='maestros.ZonaVentas', null=True, db_index=False),
-            preserve_default=True,
         ),
     ]

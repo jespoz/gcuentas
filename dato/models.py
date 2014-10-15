@@ -1,5 +1,5 @@
 from django.db import models
-from maestros.models import *
+from atributo.models import *
 
 
 class NivelServicio(models.Model):
@@ -9,8 +9,8 @@ class NivelServicio(models.Model):
     pedido = models.FloatField(default=0, db_column='/BIC/ZNTPECAN')
     factura = models.FloatField(default=0, db_column='/BIC/ZNTFACAN')
     demanda = models.FloatField(default=0, db_column='/BIC/ZNTDECAN')
-    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventaNS')
-    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisorNS')
+    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventaNS', db_index=False)
+    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisorNS', db_index=False)
     medida = models.CharField(max_length=3, null=True, db_column='UNIT')
 
     class Meta:
@@ -27,8 +27,8 @@ class VentaDiaria(models.Model):
     unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')
     kilo = models.FloatField(default=0, db_column='KYF4ZABR2XEKJ1U')
     neto = models.FloatField(default=0, db_column='KYF4Z6SI9QLJ980')
-    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventa')
-    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisor')
+    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventa', db_index=False)
+    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisor', db_index=False)
 
     class Meta:
         db_table = 'GCUENTAS\".\"/BIC/0CZVDLTSBW'
@@ -44,8 +44,8 @@ class VentaAcumulada(models.Model):
     unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')
     kilo = models.FloatField(default=0, db_column='KYF4ZABR2XEKJ1U')
     neto = models.FloatField(default=0, db_column='KYF4Z6SI9QLJ980')
-    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventaAC')
-    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisorAC')
+    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventaAC', db_index=False)
+    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisorAC', db_index=False)
 
     class Meta:
         db_table = 'GCUENTAS\".\"/BIC/0CZVDLTSBW/ACUM'
