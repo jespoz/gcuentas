@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('texto', '0001_initial'),
+        ('text', '__latest__'),
     ]
 
     operations = [
@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('subtipoComision', models.CharField(max_length=144)),
                 ('query', models.TextField()),
-                ('tipoCliente', models.ForeignKey(to='texto.TipoCliente', db_index=False)),
+                ('tipoCliente', models.ForeignKey(to='text.TipoCliente', db_index=False)),
             ],
             options={
                 'db_table': b'GCUENTAS"."/BIC/SUBTIPO/COMISION',
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='subtipocomision',
             name='tipoComision',
-            field=models.ForeignKey(to='extra.TipoComision', db_index=False),
+            field=models.ForeignKey(to='other.TipoComision', db_index=False),
             preserve_default=True,
         ),
     ]

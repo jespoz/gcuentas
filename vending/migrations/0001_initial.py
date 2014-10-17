@@ -7,8 +7,6 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('atributo', '__latest__'),
-        ('texto', '__latest__'),
     ]
 
     operations = [
@@ -16,12 +14,12 @@ class Migration(migrations.Migration):
             name='ClienteNoAtendido',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('cliente', models.CharField(max_length=10, db_column=b'DIMZCUSTOMER')),
                 ('mes', models.IntegerField(db_column=b'DIM0CALMONTH')),
+                ('material', models.CharField(max_length=18, db_column=b'DIMZMATERIAL')),
                 ('localesMes', models.FloatField(default=0, db_column=b'KYF44LHLWIKYTSO')),
                 ('localesTresMes', models.FloatField(default=0, db_column=b'KYF44LHLWIKYTS01')),
                 ('localesNoAtendidos', models.FloatField(default=0, db_column=b'KYF4ZFQCJ8RYJ1L')),
-                ('cliente', models.ForeignKey(to='atributo.AtributoCliente', db_column=b'DIMZCUSTOMER', db_index=False)),
-                ('material', models.ForeignKey(to='atributo.AtributoMaterial', db_column=b'DIMZMATERIAL', db_index=False)),
             ],
             options={
                 'db_table': b'GCUENTAS"."/BIC/0CZCNA_COM',
@@ -35,14 +33,14 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('fecha', models.CharField(max_length=8, db_column=b'CALDAY')),
+                ('cliente', models.CharField(max_length=10, db_column=b'/BIC/ZCUSTOMER')),
+                ('grupoArticulo', models.CharField(max_length=18, verbose_name=b'Grupo Articulo', db_column=b'EXTMATLGRP')),
                 ('pedido', models.FloatField(default=0, db_column=b'/BIC/ZNTPECAN')),
                 ('factura', models.FloatField(default=0, db_column=b'/BIC/ZNTFACAN')),
                 ('demanda', models.FloatField(default=0, db_column=b'/BIC/ZNTDECAN')),
+                ('preventa', models.CharField(max_length=10, null=True, db_column=b'/BIC/ZCLPRVTA')),
+                ('supervisor', models.CharField(max_length=10, null=True, db_column=b'/BIC/ZCLSUPER')),
                 ('medida', models.CharField(max_length=3, null=True, db_column=b'UNIT')),
-                ('cliente', models.ForeignKey(to='atributo.AtributoCliente', db_column=b'/BIC/ZCUSTOMER', db_index=False)),
-                ('grupoArticulo', models.ForeignKey(verbose_name=b'Grupo Articulo', to='texto.GrupoArticulo', db_column=b'EXTMATLGRP', db_index=False)),
-                ('preventa', models.ForeignKey(to='atributo.AtributoInterlocutor', null=True, db_column=b'/BIC/ZCLPRVTA', db_index=False)),
-                ('supervisor', models.ForeignKey(to='atributo.AtributoInterlocutor', null=True, db_column=b'/BIC/ZCLSUPER', db_index=False)),
             ],
             options={
                 'db_table': b'GCUENTAS"."/BIC/OHZOHNVSER',
@@ -55,15 +53,15 @@ class Migration(migrations.Migration):
             name='VentaAcumulada',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('cliente', models.CharField(max_length=10, db_column=b'DIMZCUSTOMER')),
                 ('fecha', models.CharField(max_length=8, db_column=b'DIM0CALDAY')),
+                ('material', models.CharField(max_length=18, db_column=b'DIMZMATERIAL')),
                 ('fuente', models.CharField(max_length=3, db_column=b'DIMZFNTEORG')),
                 ('unidad', models.FloatField(default=0, db_column=b'KYF4ZABR2I1ILUF')),
                 ('kilo', models.FloatField(default=0, db_column=b'KYF4ZABR2XEKJ1U')),
                 ('neto', models.FloatField(default=0, db_column=b'KYF4Z6SI9QLJ980')),
-                ('cliente', models.ForeignKey(to='atributo.AtributoCliente', db_column=b'DIMZCUSTOMER', db_index=False)),
-                ('material', models.ForeignKey(to='atributo.AtributoMaterial', db_column=b'DIMZMATERIAL', db_index=False)),
-                ('preventa', models.ForeignKey(to='atributo.AtributoInterlocutor', null=True, db_column=b'/BIC/ZCLPRVTA', db_index=False)),
-                ('supervisor', models.ForeignKey(to='atributo.AtributoInterlocutor', null=True, db_column=b'/BIC/ZCLSUPER', db_index=False)),
+                ('preventa', models.CharField(max_length=10, null=True, db_column=b'/BIC/ZCLPRVTA')),
+                ('supervisor', models.CharField(max_length=10, null=True, db_column=b'/BIC/ZCLSUPER')),
             ],
             options={
                 'db_table': b'GCUENTAS"."/BIC/0CZVDLTSBW/ACUM',
@@ -76,15 +74,15 @@ class Migration(migrations.Migration):
             name='VentaDiaria',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('cliente', models.CharField(max_length=10, db_column=b'DIMZCUSTOMER')),
                 ('fecha', models.CharField(max_length=8, db_column=b'DIM0CALDAY')),
+                ('material', models.CharField(max_length=18, db_column=b'DIMZMATERIAL')),
                 ('fuente', models.CharField(max_length=3, db_column=b'DIMZFNTEORG')),
                 ('unidad', models.FloatField(default=0, db_column=b'KYF4ZABR2I1ILUF')),
                 ('kilo', models.FloatField(default=0, db_column=b'KYF4ZABR2XEKJ1U')),
                 ('neto', models.FloatField(default=0, db_column=b'KYF4Z6SI9QLJ980')),
-                ('cliente', models.ForeignKey(to='atributo.AtributoCliente', db_column=b'DIMZCUSTOMER', db_index=False)),
-                ('material', models.ForeignKey(to='atributo.AtributoMaterial', db_column=b'DIMZMATERIAL', db_index=False)),
-                ('preventa', models.ForeignKey(to='atributo.AtributoInterlocutor', null=True, db_column=b'/BIC/ZCLPRVTA', db_index=False)),
-                ('supervisor', models.ForeignKey(to='atributo.AtributoInterlocutor', null=True, db_column=b'/BIC/ZCLSUPER', db_index=False)),
+                ('preventa', models.CharField(max_length=10, null=True, db_column=b'/BIC/ZCLPRVTA')),
+                ('supervisor', models.CharField(max_length=10, null=True, db_column=b'/BIC/ZCLSUPER')),
             ],
             options={
                 'db_table': b'GCUENTAS"."/BIC/0CZVDLTSBW',

@@ -79,23 +79,25 @@
 
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %} container-fluid">
-        <div class="col-md-2">
-            {% if not is_popup %}
-                {% include 'admin/menu.html' %}
-            {% endif %}
-        </div>
-        <div class="col-md-10">
-            {% if title %}
-                <h1>{{ title }}</h1>
-                <hr/>
-            {% endif %}
-            <div class="container-fluid">
-                {% block content %}
-                    {{ content }}
-                    <br/>
-                    {% block sidebar %}{% endblock %}
-                {% endblock %}
+        {% if not is_popup %}
+            <div id="column_menu" class="col-md-2">
+                    {% include 'admin/menu.html' %}
             </div>
+        {% endif %}
+        <div class="col-md-10">
+            {% block col-md-10 %}
+                {% if title %}
+                    <h1>{{ title }}</h1>
+                    <hr/>
+                {% endif %}
+                <div class="container-fluid">
+                    {% block content %}
+                        {{ content }}
+                        <br/>
+                        {% block sidebar %}{% endblock %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
         </div>
         <br class="clear" />
     </div>

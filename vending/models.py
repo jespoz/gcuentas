@@ -1,16 +1,16 @@
 from django.db import models
-from atributo.models import *
+from atributes.models import *
 
 
 class NivelServicio(models.Model):
     fecha = models.CharField(max_length=8, null=False, db_column='CALDAY')
-    cliente = models.ForeignKey(AtributoCliente, null=False, db_column='/BIC/ZCUSTOMER', db_index=False)
-    grupoArticulo = models.ForeignKey(GrupoArticulo, null=False, db_column='EXTMATLGRP', verbose_name='Grupo Articulo', db_index=False)
+    cliente = models.CharField(max_length=10, null=False, db_column='/BIC/ZCUSTOMER')
+    grupoArticulo = models.CharField(max_length=18, null=False, db_column='EXTMATLGRP', verbose_name='Grupo Articulo')
     pedido = models.FloatField(default=0, db_column='/BIC/ZNTPECAN')
     factura = models.FloatField(default=0, db_column='/BIC/ZNTFACAN')
     demanda = models.FloatField(default=0, db_column='/BIC/ZNTDECAN')
-    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventaNS', db_index=False)
-    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisorNS', db_index=False)
+    preventa = models.CharField(max_length=10, null=True, db_column='/BIC/ZCLPRVTA')
+    supervisor = models.CharField(max_length=10, null=True, db_column='/BIC/ZCLSUPER')
     medida = models.CharField(max_length=3, null=True, db_column='UNIT')
 
     class Meta:
@@ -20,15 +20,15 @@ class NivelServicio(models.Model):
 
 
 class VentaDiaria(models.Model):
-    cliente = models.ForeignKey(AtributoCliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
+    cliente = models.CharField(max_length=10, null=False, db_column='DIMZCUSTOMER')
     fecha = models.CharField(max_length=8, null=False, db_column='DIM0CALDAY')
-    material = models.ForeignKey(AtributoMaterial, null=False, db_column='DIMZMATERIAL', db_index=False)
+    material = models.CharField(max_length=18, null=False, db_column='DIMZMATERIAL')
     fuente = models.CharField(max_length=3, null=False, db_column='DIMZFNTEORG')
     unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')
     kilo = models.FloatField(default=0, db_column='KYF4ZABR2XEKJ1U')
     neto = models.FloatField(default=0, db_column='KYF4Z6SI9QLJ980')
-    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventa', db_index=False)
-    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisor', db_index=False)
+    preventa = models.CharField(max_length=10, null=True, db_column='/BIC/ZCLPRVTA')
+    supervisor = models.CharField(max_length=10, null=True, db_column='/BIC/ZCLSUPER')
 
     class Meta:
         db_table = 'GCUENTAS\".\"/BIC/0CZVDLTSBW'
@@ -37,15 +37,15 @@ class VentaDiaria(models.Model):
 
 
 class VentaAcumulada(models.Model):
-    cliente = models.ForeignKey(AtributoCliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
+    cliente = models.CharField(max_length=10, null=False, db_column='DIMZCUSTOMER')
     fecha = models.CharField(max_length=8, null=False, db_column='DIM0CALDAY')
-    material = models.ForeignKey(AtributoMaterial, null=False, db_column='DIMZMATERIAL', db_index=False)
+    material = models.CharField(max_length=18, null=False, db_column='DIMZMATERIAL')
     fuente = models.CharField(max_length=3, null=False, db_column='DIMZFNTEORG')
     unidad = models.FloatField(default=0, db_column='KYF4ZABR2I1ILUF')
     kilo = models.FloatField(default=0, db_column='KYF4ZABR2XEKJ1U')
     neto = models.FloatField(default=0, db_column='KYF4Z6SI9QLJ980')
-    preventa = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLPRVTA', related_name='preventaAC', db_index=False)
-    supervisor = models.ForeignKey(AtributoInterlocutor, null=True, db_column='/BIC/ZCLSUPER', related_name='supervisorAC', db_index=False)
+    preventa = models.CharField(max_length=10, null=True, db_column='/BIC/ZCLPRVTA')
+    supervisor = models.CharField(max_length=10, null=True, db_column='/BIC/ZCLSUPER')
 
     class Meta:
         db_table = 'GCUENTAS\".\"/BIC/0CZVDLTSBW/ACUM'
@@ -54,9 +54,9 @@ class VentaAcumulada(models.Model):
 
 
 class ClienteNoAtendido(models.Model):
-    cliente = models.ForeignKey(AtributoCliente, null=False, db_column='DIMZCUSTOMER', db_index=False)
+    cliente = models.CharField(max_length=10, null=False, db_column='DIMZCUSTOMER')
     mes = models.IntegerField(null=False, db_column='DIM0CALMONTH')
-    material = models.ForeignKey(AtributoMaterial, null=False, db_column='DIMZMATERIAL', db_index=False)
+    material = models.CharField(max_length=18, null=False, db_column='DIMZMATERIAL')
     localesMes = models.FloatField(default=0, db_column='KYF44LHLWIKYTSO')
     localesTresMes = models.FloatField(default=0, db_column='KYF44LHLWIKYTS01')
     localesNoAtendidos = models.FloatField(default=0, db_column='KYF4ZFQCJ8RYJ1L')
